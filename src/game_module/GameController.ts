@@ -6,11 +6,11 @@ const GAME_STATE = {
   nonTurn: null,
   SIDES: {
     Vikings: {
-      id: 'v',
+      id: "v",
       units: [],
     },
     Kings: {
-      id: 'k',
+      id: "k",
       units: [],
     }
   },
