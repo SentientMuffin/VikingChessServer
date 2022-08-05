@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import gameModel from "./game.model";
 
 // this should go into a model of some sorts
 const GAME_STATE = {
@@ -23,6 +24,7 @@ const GAME_STATE = {
 
 export const start = (req: Request, res: Response) => {
   // Setup game state, and put into model
+  gameModel.put(1, GAME_STATE);
   res.status(200).json(GAME_STATE);
 };
 

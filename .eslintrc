@@ -10,13 +10,14 @@
     "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
+    "indent": ["error", 2, { "ignoreComments": true }],
+    "semi": ["error", "always"],
     "no-trailing-spaces": ["error", { "skipBlankLines": false }],
     "no-multiple-empty-lines": "error", 
     "comma-spacing": ["error", { 
       "before": false, 
       "after": true 
     }],
-    "indent": ["error", 2],
     "max-len": ["error", { "code": 80 }],
     "no-multi-spaces": "error",
     "quotes": ["error", "double"],
@@ -28,6 +29,11 @@
     "require-await": "error",
     "spaced-comment": ["error", "always"],
     "space-before-function-paren": ["error", "never"],
-    "space-before-blocks": [ "error", { "functions": "always", "keywords": "never", "classes": "always" }]
+    "space-before-blocks": [ "error", { 
+      "functions": "always", 
+      "keywords": "never", 
+      "classes": "always" 
+    }],
+    "eol-last": ["error", "never"]
   }
 }
