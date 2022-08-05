@@ -10,7 +10,10 @@
     "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
-    "indent": ["error", 2, { "ignoreComments": true }],
+    "indent": ["error", 2, { 
+      "SwitchCase": 1,
+      "ignoreComments": true 
+    }],
     "semi": ["error", "always"],
     "no-trailing-spaces": ["error", { "skipBlankLines": false }],
     "no-multiple-empty-lines": "error", 
@@ -28,10 +31,18 @@
     }],
     "require-await": "error",
     "spaced-comment": ["error", "always"],
-    "space-before-function-paren": ["error", "never"],
+    "space-before-function-paren": ["error", {
+      "anonymous": "always", 
+      "named": "never", 
+      "asyncArrow": "always"
+    }],
+    "keyword-spacing": ["error", {
+      "before": true,
+      "after": true
+    }],
     "space-before-blocks": [ "error", { 
       "functions": "always", 
-      "keywords": "never", 
+      "keywords": "always", 
       "classes": "always" 
     }],
     "eol-last": ["error", "never"]

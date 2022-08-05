@@ -7,7 +7,7 @@ router.get("/status", (req: Request, res: Response) => {
   gameController.status(req, res);
 });
 
-router.post("/start", (req: Request, res: Response) => {
+router.get("/start", (req: Request, res: Response) => {
   gameController.start(req, res);
 });
 
