@@ -22,12 +22,12 @@ const GAME_STATE = {
   }
 };
 
-export const start = (req: Request, res: Response) => {
+export const start = async (req: Request, res: Response) => {
   // Setup game state, and put into model
   GameModel.initGame();
-  res.status(200).json(GameModel.getState());
+  res.status(200).json(await GameModel.getState());
 };
 
-export const status = (req: Request, res: Response) => {
-  res.status(200).json(GameModel.getState());
+export const status = async (req: Request, res: Response) => {
+  res.status(200).json(await GameModel.getState());
 };

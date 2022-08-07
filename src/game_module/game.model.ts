@@ -1,16 +1,5 @@
-import * as redis from "redis";
+import { db } from "../shared/db";
 import * as CONSTANTS from "../shared/constants";
-
-const client = redis.createClient({
-  socket: {
-    host: "127.0.0.1",
-    port: 6379
-  }
-});
-
-client.on("error", err => {
-  console.log("Error" + err);
-});
 
 const initGame = function () {
 
@@ -23,12 +12,15 @@ const initGame = function () {
       stringRep += locationEval(currentLocation);
     }
   }
-
-  client.lPush("game", stringRep);
+  db.set("game", stringRep);
 };
 
-const getState = function () {
-  return client.get("game");
+const getState = async function () {
+  return await db.get("game");
+};
+
+const locationMatch = (location: number[], check: number[]) => {
+  return location[0] === check[0] && location[1] === check[1];
 };
 
 const locationEval = function (location: number[]) {
@@ -37,12 +29,14 @@ const locationEval = function (location: number[]) {
   }
 
     // check for kingsUnit
-  if (CONSTANTS.kingSideInitialLocation.includes(location)) {
+  if (CONSTANTS.kingSideInitialLocation
+    .some(item => locationMatch(item, location))) {
     return CONSTANTS.Rep.KingsUnitRep;
   }
 
     // check for vikingsUnit
-  if (CONSTANTS.vikingSideInitialLocation.includes(location)) {
+  if (CONSTANTS.vikingSideInitialLocation
+    .some(item => locationMatch(item, location))) {
     return CONSTANTS.Rep.VikingsUnitRep;
   }
 
